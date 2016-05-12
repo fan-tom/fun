@@ -2,6 +2,11 @@
 % AND RIGHT-ASSOCIATIVE APPLICATION interpreter
 % usage: eval(<filename>).
 % one simple example in file boolean.l
+% syntax:
+% \x.x or λx.x-     abstraction
+% (<term1> <term2>)-application
+% myterm=λx.λy.x-   assignment
+% multichracter variables names are allowed
 % Author: F@nT0M
 % Date: 29.04.2016
 
@@ -185,12 +190,11 @@ eval(File):-open(File,read,Src),
             string_chars(Str,Chars),
             phrase(program,Chars).
 
-
 %some examples
 %true or false->true
 %solve_str("((\l.\r.(l l)r)(\x.\y.x))(\x.\y.y)",R).
 %or place it in file and eval
 %fls=λx.λy.y;
 %tru=λx.λy.x;
-%and=λl.λr.((l r) l);
-%((and tru) fls);
+%or=λl.λr.((l tru) fls);
+%((or tru) fls);
